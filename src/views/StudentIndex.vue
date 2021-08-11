@@ -10,3 +10,22 @@
   </div>
 </template>
 
+<script>
+import axios from "axios";
+
+export default {
+  data: function () {
+    return {
+      students: [],
+    };
+  },
+  methods: {
+    indexStudents: function () {
+      axios.get("http://localhost:3000/students").then((response) => {
+        this.students = response.data;
+        console.log("all students", this.students);
+      });
+    },
+  },
+};
+</script>

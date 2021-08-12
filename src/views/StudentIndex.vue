@@ -2,7 +2,7 @@
   <div class="students-index">
     <div v-for="student in students" :key="student.id">
       <router-link v-bind:to="`/students/${student.id}`">
-        <img :src="student.photo" alt="no image found" />
+        <img :src="student.photo_url" alt="no image found" />
         <h2>{{ student.first_name }} {{ student.last_name }}</h2>
         <p>{{ student.bio }}</p>
       </router-link>

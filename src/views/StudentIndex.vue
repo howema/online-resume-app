@@ -20,6 +20,9 @@ export default {
       students: [],
     };
   },
+  created: function () {
+    this.indexStudents();
+  },
   methods: {
     indexStudents: function () {
       axios.get("http://localhost:3000/students").then((response) => {

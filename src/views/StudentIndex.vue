@@ -4,7 +4,7 @@
       <router-link v-bind:to="`/students/${student.id}`">
         <img :src="student.photo" alt="no image found" />
         <h2>{{ student.first_name }} {{ student.last_name }}</h2>
-        <p>{{ student.short_bio }}</p>
+        <p>{{ student.bio }}</p>
       </router-link>
     </div>
   </div>

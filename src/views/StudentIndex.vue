@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     indexStudents: function () {
-      axios.get("http://localhost:3000/students").then((response) => {
+      axios.get("https://evening-hollows-33474.herokuapp.com/students").then((response) => {
         this.students = response.data;
         console.log("all students", this.students);
       });

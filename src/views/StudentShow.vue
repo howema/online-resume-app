@@ -147,7 +147,7 @@ export default {
   },
   methods: {
     studentShow: function () {
-      axios.get("https://evening-hollows-33474.herokuapp.com/students/" + this.$route.params.id).then((response) => {
+      axios.get("https://evening-hollows-33474.herokuapp.com/resumes/" + this.$route.params.id).then((response) => {
         this.student = response.data;
         this.experiences = this.student.experiences;
         this.educations = this.student.education;

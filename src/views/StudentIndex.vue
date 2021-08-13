@@ -7,7 +7,15 @@
         <p>{{ student.bio }}</p>
       </router-link>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav"></nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+      <span class="d-none d-lg-block">
+        <img
+          class="img-fluid img-profile rounded-circle mx-auto mb-2"
+          src="https://t3.ftcdn.net/jpg/03/77/85/04/360_F_377850455_Gk0rRBzegH6YX9SZK9YbgyYyLwrVb9zi.jpg"
+          alt="..."
+        />
+      </span>
+    </nav>
   </div>
 </template>
 
@@ -33,3 +41,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.rounded-circle {
+  width: 250px;
+}
+</style>

@@ -1,12 +1,23 @@
 <template>
   <div class="students-index">
     <div v-for="student in students" :key="student.id">
-      <router-link v-bind:to="`/students/${student.id}`">
-        <img :src="student.photo_url" alt="no image found" />
-        <h2>{{ student.first_name }} {{ student.last_name }}</h2>
-        <p>{{ student.bio }}</p>
-      </router-link>
+      <section class="resume-section" id="experience">
+        <router-link v-bind:to="`/students/${student.id}`">
+          <div class="resume-section-content">
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+              <div class="flex-grow-1">
+                <img :src="student.photo_url" alt="no image found" />
+                <h3 class="mb-0">{{ student.first_name }} {{ student.last_name }}</h3>
+                <p>
+                  {{ student.bio }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </router-link>
+      </section>
     </div>
+    <hr class="m-0" />
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
       <span class="d-none d-lg-block">
         <img
@@ -45,5 +56,8 @@ export default {
 <style>
 .rounded-circle {
   width: 250px;
+}
+img {
+  width: 400px;
 }
 </style>

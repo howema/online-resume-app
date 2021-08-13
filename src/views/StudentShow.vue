@@ -25,8 +25,7 @@
           <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
           <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
           <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
-          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interests</a></li>
-          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#capstones">Capstones</a></li>
         </ul>
       </div>
     </nav>
@@ -53,40 +52,79 @@
         </div>
       </section>
       <hr class="m-0" />
-    </div>
-    <div>
-      <img :src="student.photo_url" alt="no image found" />
-      <h2>{{ student.first_name }} {{ student.last_name }}</h2>
-      <p>{{ student.bio }}</p>
-      <p>{{ student.email }}</p>
-      <p>{{ student.phone_number }}</p>
-      <p>{{ student.linkedin_url }}</p>
-      <p>{{ student.twitter_handle }}</p>
-      <p>{{ student.website }}</p>
-      <p>{{ student.github_url }}</p>
-    </div>
-    <div v-for="experience in experiences" :key="experience.id">
-      <p>{{ experience.start_date }}</p>
-      <p>{{ experience.end_date }}</p>
-      <p>{{ experience.job_title }}</p>
-      <p>{{ experience.company }}</p>
-      <p>{{ experience.details }}</p>
-    </div>
-    <div v-for="education in educations" :key="education.id">
-      <p>{{ education.start_date }}</p>
-      <p>{{ education.end_date }}</p>
-      <p>{{ education.degree }}</p>
-      <p>{{ education.university_name }}</p>
-      <p>{{ education.details }}</p>
-    </div>
-    <div v-for="skill in skills" :key="skill.id">
-      <p>{{ skill.name }}</p>
-    </div>
-    <div v-for="capstone in capstones" :key="capstone.id">
-      <p>{{ capstone.name }}</p>
-      <p>{{ capstone.description }}</p>
-      <p>{{ capstone.url }}</p>
-      <img :src="capstone.screenshot" />
+      <!-- Experience-->
+      <section class="resume-section" id="experience">
+        <div class="resume-section-content">
+          <h2 class="mb-5">Experience</h2>
+          <div v-for="experience in experiences" :key="experience.id">
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+              <div class="flex-grow-1">
+                <h3 class="mb-0">{{ experience.job_title }}</h3>
+                <div class="subheading mb-3">{{ experience.company }}</div>
+                <p>
+                  {{ experience.details }}
+                </p>
+              </div>
+              <div class="flex-shrink-0">
+                <span class="text-primary">{{ experience.start_date }} - {{ experience.end_date }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr class="m-0" />
+      <!-- Education-->
+      <section class="resume-section" id="education">
+        <div class="resume-section-content">
+          <h2 class="mb-5">Education</h2>
+          <div v-for="education in educations" :key="education.id">
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+              <div class="flex-grow-1">
+                <h3 class="mb-0">{{ education.university_name }}</h3>
+                <div class="subheading mb-3">{{ education.degree }}</div>
+                <div>{{ education.details }}</div>
+              </div>
+              <div class="flex-shrink-0">
+                <span class="text-primary">{{ education.start_date }} - {{ education.end_date }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr class="m-0" />
+      <!-- Skills-->
+      <section class="resume-section" id="skills">
+        <div class="resume-section-content">
+          <h2 class="mb-5">Skills</h2>
+          <ul class="fa-ul mb-0">
+            <div v-for="skill in skills" :key="skill.id">
+              <li>
+                <span class="fa-li"><i class="fas fa-check"></i></span>
+                {{ skill.name }}
+              </li>
+            </div>
+          </ul>
+        </div>
+      </section>
+      <hr class="m-0" />
+      <!-- Capstones-->
+      <section class="resume-section" id="capstones">
+        <div class="resume-section-content">
+          <h2 class="mb-5">Capstones</h2>
+          <div v-for="capstone in capstones" :key="capstone.id">
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+              <div class="flex-grow-1">
+                <h3 class="mb-0">{{ capstone.name }}</h3>
+                <div class="subheading mb-3">{{ capstone.url }}</div>
+                <div>{{ capstone.description }}</div>
+                <img :src="capstone.screenshot" />
+              </div>
+              <div class="flex-shrink-0"><span class="text-primary">August 2006 - May 2010</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr class="m-0" />
     </div>
   </div>
 </template>
@@ -112,7 +150,7 @@ export default {
       axios.get("http://localhost:3000/students/" + this.$route.params.id).then((response) => {
         this.student = response.data;
         this.experiences = this.student.experiences;
-        this.educations = this.student.educations;
+        this.educations = this.student.education;
         this.skills = this.student.skills;
         this.capstones = this.student.capstones;
         console.log(response.data);
